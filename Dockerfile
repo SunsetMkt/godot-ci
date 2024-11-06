@@ -84,3 +84,8 @@ RUN echo 'export/android/shutdown_adb_on_exit = true' >> ~/.config/godot/editor_
 RUN wget https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe -O /opt/rcedit.exe
 RUN echo 'export/windows/rcedit = "/opt/rcedit.exe"' >> ~/.config/godot/editor_settings-${GODOT_VERSION:0:3}.tres
 RUN echo 'export/windows/wine = "/usr/bin/wine64-stable"' >> ~/.config/godot/editor_settings-${GODOT_VERSION:0:3}.tres
+
+# For compatibility with older 4 versions of Godot.
+RUN cp ~/.config/godot/editor_settings-${GODOT_VERSION:0:3}.tres ~/.config/godot/editor_settings-4.tres
+# For convenience.
+RUN cp ~/.config/godot/editor_settings-4.tres /opt/editor_settings-4.tres
